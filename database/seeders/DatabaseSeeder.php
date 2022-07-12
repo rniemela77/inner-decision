@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Goal;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Empty out the tables
+        User::truncate();
+        Goal::truncate();
+
+        // Store dummy data in DB
+        User::factory(3)->create();
+        Goal::factory(6)->create();
     }
 }
