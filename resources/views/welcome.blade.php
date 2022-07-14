@@ -411,6 +411,8 @@
                 <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
+{{--                probably could skip the hidden form all together and just trigger the post request via axios--}}
+{{--                in the onclick that would eliminate the need for an empty form--}}
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
