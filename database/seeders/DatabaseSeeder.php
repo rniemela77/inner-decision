@@ -21,6 +21,21 @@ class DatabaseSeeder extends Seeder
 
         // Store dummy data in DB
         User::factory(3)->create();
-        Goal::factory(6)->create();
+        Goal::factory()->create([
+            'user_id' => '1',
+            'created_at' => '2022-07-13 00:00:00'
+        ]);
+        Goal::factory()->create([
+            'user_id' => '1',
+            'created_at' => '2022-07-14 00:00:00'
+        ]);
+        Goal::factory()->create([
+            'user_id' => '1',
+            'created_at' => '2022-07-15 00:00:00'
+        ]);
+        Goal::factory()->create([
+            'user_id' => '2',
+            'created_at' => '2022-07-15 00:00:00'
+        ]);
     }
 }

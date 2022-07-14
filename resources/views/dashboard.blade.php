@@ -13,7 +13,7 @@
                         @foreach ($goals as $goal)
                             <li>{{ $goal->title }}</li>
 
-                            <form action="/goals/{{$goal->id}}/delete" method="POST">
+                            <form action="/goals/{{$goal->id}}/delete" method="POST" class="mb-4 text-red-600">
                                 @csrf
                                 <button type="submit">Delete</button>
                             </form>
@@ -21,12 +21,12 @@
                         {{--<li>Task 1 - EASY</li>--}}
                     </ol>
 
-{{--                    <h1>Duke's Goals</h1>--}}
-{{--                    <ul>--}}
-{{--                        <li>Task 1</li>--}}
-{{--                        <li>Task 2</li>--}}
-{{--                        <li>Task 3</li>--}}
-{{--                    </ul>--}}
+                    {{--                    <h1>Duke's Goals</h1>--}}
+                    {{--                    <ul>--}}
+                    {{--                        <li>Task 1</li>--}}
+                    {{--                        <li>Task 2</li>--}}
+                    {{--                        <li>Task 3</li>--}}
+                    {{--                    </ul>--}}
                 </div>
             </div>
         </div>

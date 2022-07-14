@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Goal;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        'goals' => Goal::all()->where('user_id', 'like', auth()->id())
+        'goals' => Goal::all()
+            ->where('created_at', '>=', date('Y-m-d') . ' 00:00:00')
+            ->where('user_id', 'like', auth()->id())
     ]);
 })->middleware(['auth'])->name('dashboard');
 
