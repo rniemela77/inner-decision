@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        'goals' => Goal::all()
+        'goals' => Goal::all()->where('user_id', 'like', auth()->id())
     ]);
 })->middleware(['auth'])->name('dashboard');
 
