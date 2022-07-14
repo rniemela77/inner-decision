@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Goal;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +28,16 @@ Route::get('/dashboard', function () {
 
 Route::get('/goals/new', function () {
     return view('goals.create');
+});
+
+Route::post('/goals/new', function () {
+    $goal = new Goal;
+    $goal->create([
+        'title' => request()->title,
+        'user_id' => auth()->id()
+    ]);
+
+    return redirect('dashboard');
 });
 
 Route::post('/goals/{goal}/delete', function ($goal) {
