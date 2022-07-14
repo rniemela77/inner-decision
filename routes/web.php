@@ -24,4 +24,10 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth'])->name('dashboard');
 
+Route::post('/goals/{goal}/delete', function ($goal) {
+    Goal::find($goal)->delete();
+
+    return redirect('dashboard');
+});
+
 require __DIR__ . '/auth.php';

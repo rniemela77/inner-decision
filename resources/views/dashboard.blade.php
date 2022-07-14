@@ -12,6 +12,11 @@
                     <ol>
                         @foreach ($goals as $goal)
                             <li>{{ $goal->title }}</li>
+
+                            <form action="/goals/{{$goal->id}}/delete" method="POST">
+                                @csrf
+                                <button type="submit">Delete</button>
+                            </form>
                         @endforeach
                         {{--<li>Task 1 - EASY</li>--}}
                     </ol>
