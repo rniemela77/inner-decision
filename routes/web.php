@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/goals/new', function () {
+    return view('goals.create');
+});
+
 Route::post('/goals/{goal}/delete', function ($goal) {
     Goal::find($goal)->delete();
 
