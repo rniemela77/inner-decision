@@ -20,6 +20,7 @@
                                 @csrf
                                 <button type="submit">Delete</button>
                             </form>
+                                <a href="/goals/{{$goal->id}}/edit" class="ml-2">Edit</a>
                         @endforeach
                         {{--<li>Task 1 - EASY</li>--}}
                     </ol>

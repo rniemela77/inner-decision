@@ -41,6 +41,22 @@ Route::post('/goals/new', function () {
     return redirect('dashboard'); // Flash message?
 });
 
+Route::get('/goals/{goal}/edit', function ($goal) {
+    return view('goals.edit', [
+        'goal' => Goal::find($goal)
+    ]);
+})->middleware(['auth']);
+
+Route::put('/goals/{goal}', function ($goal) {
+    $goal = Goal::find($goal);
+
+    $goal->title = request()->all()['title'];
+
+    $goal->save();
+
+    return redirect('dashboard'); // Flash message?
+});
+
 Route::post('/goals/{goal}/delete', function ($goal) {
     Goal::find($goal)->delete();
 
