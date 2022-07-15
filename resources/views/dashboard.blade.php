@@ -8,23 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="/goals/new">New Goal</a>
 
                     <ol>
                         @foreach ($goals as $goal)
-                            <div class="flex">
-                                <li>{{ $goal->title }}</li>
-
-                                <form action="/goals/{{$goal->id}}/delete" method="POST" class="text-red-600 ml-2">
-                                    @csrf
-                                    <button type="submit">Delete</button>
-                                </form>
-
-                                <a href="/goals/{{$goal->id}}/edit" class="ml-2">Edit</a>
-                            </div>
+                            <x-goal-item :goal="$goal" />
                         @endforeach
                         {{--<li>Task 1 - EASY</li>--}}
                     </ol>
