@@ -31,13 +31,14 @@ Route::get('/goals/new', function () {
 });
 
 Route::post('/goals/new', function () {
+    // Validation?
     $goal = new Goal;
     $goal->create([
         'title' => request()->title,
         'user_id' => auth()->id()
     ]);
 
-    return redirect('dashboard');
+    return redirect('dashboard'); // Flash message?
 });
 
 Route::post('/goals/{goal}/delete', function ($goal) {
