@@ -34,11 +34,24 @@ Route::post('/goals/new', function () {
     // Validation?
     $goal = new Goal;
     $goal->create([
-        'title' => request()->title,
+        'title' => '',
         'user_id' => auth()->id()
     ]);
 
     return redirect('dashboard'); // Flash message?
+});
+
+Route::post('/goals/saveall', function () {
+    $arr = array();
+
+    foreach (request()->get('data') as $goal) {
+        if (strlen($goal) > 0) {
+            $arr[] = $goal;
+        }
+    }
+
+    return $arr;
+
 });
 
 Route::put('/goals/{goal}', function ($goal) {
