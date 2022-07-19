@@ -42,16 +42,9 @@ Route::post('/goals/new', function () {
 });
 
 Route::post('/goals/saveall', function () {
-    $arr = array();
+    Goal::updateArray(request()->get('data'));
 
-    foreach (request()->get('data') as $goal) {
-        if (strlen($goal) > 0) {
-            $arr[] = $goal;
-        }
-    }
-
-    return $arr;
-
+    return redirect('dashboard'); // flash message?
 });
 
 Route::put('/goals/{goal}', function ($goal) {

@@ -16,4 +16,21 @@ class Goal extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * @param $myArray
+     * @return void
+     */
+    public function updateArray($myArray)
+    {
+        foreach ($myArray as $key => $title) {
+            $goal = self::find($key);
+            if (!strlen($title)) {
+                $goal->delete();
+            } else {
+                $goal->title = $title;
+                $goal->save();
+            }
+        }
+    }
 }
